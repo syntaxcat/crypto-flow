@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PriceSnapshot {
+  id        Int      @id @default(autoincrement())
+  symbol    String
+  price     String
+  high24h   String
+  low24h    String
+  volume    String
+  priceChangePercent String
+  createdAt DateTime @default(now())
+
+  @@index([symbol, createdAt])
+}
