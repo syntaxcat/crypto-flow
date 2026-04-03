@@ -31,13 +31,22 @@ export function MarketTable() {
   return (
     <div className="market-table-wrap">
       <table className="market-table">
+        <colgroup>
+          <col style={{ width: "32px" }} />
+          <col />
+          <col style={{ width: "100px" }} />
+          <col style={{ width: "72px" }} />
+          <col className="col-volume" />
+        </colgroup>
         <thead>
           <tr>
             {th("market_cap_rank", "#")}
             <th className="market-th">Coin</th>
             {th("current_price", "Price")}
             {th("price_change_percentage_24h", "24h %")}
-            {th("total_volume", "Volume")}
+            <th className="market-th col-volume" onClick={() => handleSort("total_volume")} style={{ cursor: "pointer" }}>
+              Volume {sortKey === "total_volume" ? (sortAsc ? "▲" : "▼") : ""}
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -47,17 +56,17 @@ export function MarketTable() {
               <tr key={coin.id} className="market-row">
                 <td className="market-td muted">{coin.market_cap_rank}</td>
                 <td className="market-td">
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <img src={coin.image} alt={coin.name} width={20} height={20} style={{ borderRadius: "50%" }} />
-                    <span style={{ fontWeight: "bold" }}>{coin.name}</span>
-                    <span className="muted" style={{ fontSize: "0.8rem" }}>{coin.symbol.toUpperCase()}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", overflow: "hidden" }}>
+                    <img src={coin.image} alt={coin.name} width={18} height={18} style={{ borderRadius: "50%", flexShrink: 0 }} />
+                    <span style={{ fontWeight: "bold", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{coin.name}</span>
+                    <span className="col-symbol muted" style={{ fontSize: "0.8rem", flexShrink: 0 }}>{coin.symbol.toUpperCase()}</span>
                   </div>
                 </td>
                 <td className="market-td">{symbol}{coin.current_price.toLocaleString()}</td>
                 <td className={`market-td ${pct >= 0 ? "positive" : "negative"}`}>
                   {pct >= 0 ? "▲" : "▼"}{Math.abs(pct).toFixed(2)}%
                 </td>
-                <td className="market-td muted">{symbol}{(coin.total_volume / 1e6).toFixed(0)}M</td>
+                <td className="market-td muted col-volume">{symbol}{(coin.total_volume / 1e6).toFixed(0)}M</td>
               </tr>
             );
           })}
