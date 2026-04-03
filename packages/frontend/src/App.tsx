@@ -34,7 +34,7 @@ export default function App() {
       <main className="app">
         {tab === "dashboard" && (
           <>
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem" }}>
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "1rem", position: "relative" }}>
               <PriceAlertModal prices={prices} />
             </div>
 

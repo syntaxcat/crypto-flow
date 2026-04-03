@@ -3,6 +3,7 @@ import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recha
 import { SupportedSymbol } from "@crypto-flow/shared";
 import { useCoinHistory, TimeRange } from "../hooks/useCoinHistory";
 import { CandlestickChart } from "./CandlestickChart";
+import { useWindowWidth } from "../hooks/useWindowWidth";
 
 interface Props {
   symbol: SupportedSymbol;
@@ -25,7 +26,7 @@ export function PriceHistogram({ symbol }: Props) {
   const min = data ? Math.min(...data.map((d) => d.price)) : 0;
   const max = data ? Math.max(...data.map((d) => d.price)) : 0;
   const padding = (max - min) * 0.1;
-  const isMobile = window.innerWidth <= 640;
+  const isMobile = useWindowWidth() <= 640;
 
   return (
     <div className="histogram">

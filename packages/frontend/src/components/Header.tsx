@@ -18,7 +18,7 @@ export function Header() {
               className={`currency-btn ${currency === c ? "currency-btn--active" : ""}`}
               onClick={() => setCurrency(c)}
             >
-              {CURRENCY_SYMBOLS[c]} {c}
+              {CURRENCY_SYMBOLS[c]}<span className="currency-label"> {c}</span>
             </button>
           ))}
         </div>
