@@ -13,29 +13,29 @@ export function PriceCard({ symbol, coin, isSelected, onClick }: Props) {
 
   return (
     <div
+      className="price-card"
       onClick={onClick}
       style={{
         border: `2px solid ${isSelected ? "#4f46e5" : "#e5e7eb"}`,
-        borderRadius: "12px",
-        padding: "1rem 1.5rem",
-        cursor: "pointer",
-        minWidth: "180px",
         background: isSelected ? "#eef2ff" : "#fff",
       }}
     >
-      <div style={{ fontWeight: "bold", fontSize: "1rem" }}>{symbol.replace("USDT", "")}</div>
+      <div className="price-card__symbol">{symbol.replace("USDT", "")}</div>
 
       {coin ? (
         <>
-          <div style={{ fontSize: "1.4rem", fontWeight: "bold", marginTop: "0.25rem" }}>
+          <div className="price-card__price">
             ${parseFloat(coin.price).toLocaleString()}
           </div>
-          <div style={{ color: isPositive ? "#16a34a" : "#dc2626", fontSize: "0.85rem" }}>
+          <div
+            className="price-card__change"
+            style={{ color: isPositive ? "#16a34a" : "#dc2626" }}
+          >
             {isPositive ? "▲" : "▼"} {Math.abs(changePercent!).toFixed(2)}%
           </div>
         </>
       ) : (
-        <div style={{ color: "#9ca3af", marginTop: "0.25rem" }}>Connecting...</div>
+        <div className="price-card__connecting">Connecting...</div>
       )}
     </div>
   );

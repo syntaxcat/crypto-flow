@@ -9,10 +9,10 @@ export default function App() {
   const prices = useLivePrices();
 
   return (
-    <div style={{ padding: "2rem", fontFamily: "monospace" }}>
-      <h1>Crypto Flow</h1>
+    <div className="app">
+      <h1 className="app-title">Crypto Flow</h1>
 
-      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      <div className="cards-grid">
         {SUPPORTED_SYMBOLS.map((symbol) => (
           <PriceCard
             key={symbol}

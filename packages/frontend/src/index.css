@@ -1,0 +1,136 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: monospace;
+  background: #f9fafb;
+  color: #111827;
+}
+
+/* ── App layout ── */
+.app {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Cards grid ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* ── Price card ── */
+.price-card {
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+
+.price-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.price-card__symbol {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.price-card__price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
+.price-card__change {
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+.price-card__connecting {
+  color: #9ca3af;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+
+/* ── Histogram ── */
+.histogram {
+  margin-top: 2rem;
+}
+
+.histogram-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.histogram-title {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.range-filters {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.range-btn {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 0.8rem;
+  transition: background 0.1s, color 0.1s;
+}
+
+/* ── Mobile ── */
+@media (max-width: 640px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .app-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .price-card__price {
+    font-size: 1.1rem;
+  }
+
+  .histogram-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .range-btn {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ── Tablet ── */
+@media (min-width: 641px) and (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
