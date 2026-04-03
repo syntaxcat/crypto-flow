@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SUPPORTED_SYMBOLS, SupportedSymbol } from "@crypto-flow/shared";
 import { useLivePrices } from "./hooks/useLivePrices";
 import { PriceCard } from "./components/PriceCard";
+import { PriceHistogram } from "./components/PriceHistogram";
 
 export default function App() {
   const [selected, setSelected] = useState<SupportedSymbol>("BTCUSDT");
@@ -22,6 +23,8 @@ export default function App() {
           />
         ))}
       </div>
+
+      <PriceHistogram symbol={selected} />
     </div>
   );
 }
